@@ -82,4 +82,44 @@ class TaskController extends Controller
 
     }
 
+    public function changeTaskTitle(Request $request) {
+
+        $params = $request->query();
+
+        if((!isset($params['title'])) or (empty($params['title']))){
+            return ['success' => false, 'error' => 'title missing'];
+        } else if((!isset($params['uuid'])) or (empty($params['uuid']))){
+            return ['success' => false, 'error' => 'uuid missing'];
+        }
+
+        $result = TaskModel::updateTaskTitle($params['uuid'], $params['title']);
+
+        if((isset($result)) && ($result !== 0)){
+            return ['success' => true, 'error' => null, 'data' => $result];
+        } else {
+            return ['success' => false, 'error' => 'update failed', 'data' => null];
+        }
+
+    }
+
+    public function changeTaskContent(Request $request) {
+
+        $params = $request->query();
+
+        if((!isset($params['content'])) or (empty($params['content']))){
+            return ['success' => false, 'error' => 'content missing'];
+        } else if((!isset($params['uuid'])) or (empty($params['uuid']))){
+            return ['success' => false, 'error' => 'uuid missing'];
+        }
+
+        $result = TaskModel::updateTaskContent($params['uuid'], $params['content']);
+
+        if((isset($result)) && ($result !== 0)){
+            return ['success' => true, 'error' => null, 'data' => $result];
+        } else {
+            return ['success' => false, 'error' => 'update failed', 'data' => null];
+        }
+
+    }
+
 }

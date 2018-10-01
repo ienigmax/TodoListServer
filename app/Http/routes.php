@@ -17,6 +17,8 @@ Route::get('/api/v1/tasks/get_all_tasks', 'TaskController@getAllTasks');
 Route::get('/api/v1/tasks/add_new_task', 'TaskController@addNewTask');
 Route::get('/api/v1/tasks/delete_task', 'TaskController@removeExistingTask');
 Route::get('/api/v1/tasks/change_status', 'TaskController@changeTaskStatus');
+Route::get('/api/v1/tasks/update_title', 'TaskController@changeTaskTitle');
+Route::get('/api/v1/tasks/update_content', 'TaskController@changeTaskContent');
 Route::any('/api/v1/tasks/{param}', function(){
    return view('errors/404');
 });
