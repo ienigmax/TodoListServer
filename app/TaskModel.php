@@ -13,7 +13,7 @@ class TaskModel extends Model
 
         $self = new static;
 
-        DB::insert('INSERT INTO ' . $self->table . ' (uuid, title, content, created_at, updated_at) VALUES (?,?,?,?,?)', [md5($data['content'] . time() . rand()), $data['title'], $data['content'], time(), time()]);
+        DB::insert('INSERT INTO ' . $self->table . ' (uuid, title, content, created_at, updated_at, status) VALUES (?,?,?,?,?,?)', [md5($data['content'] . time() . rand()), $data['title'], $data['content'], time(), time(), 1]);
         return DB::getPdo()->lastInsertId();
     }
 
