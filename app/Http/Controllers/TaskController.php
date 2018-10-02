@@ -72,6 +72,12 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'uuid missing'];
         }
 
+        if($params['status'] === 'off'){
+            $params['status'] = '0';
+        } else if($params['status'] === 'on'){
+            $params['status'] = '1';
+        }
+
         $result = TaskModel::updateTaskStatus($params['uuid'], $params['status']);
 
         if((isset($result)) && ($result !== 0)){
