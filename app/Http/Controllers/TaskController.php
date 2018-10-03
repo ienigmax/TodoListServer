@@ -34,7 +34,7 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'content missing'];
         }
 
-        $result = TaskModel::insertTask(['title' => $params['title'], 'content' => $params['content']]);
+        $result = TaskModel::insertTask(['title' => base64_decode($params['title']), 'content' => base64_decode($params['content'])]);
 
         if((isset($result)) && ($result !== 0)){
             return ['success' => true, 'error' => null, 'data' => $result];
@@ -98,7 +98,7 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'uuid missing'];
         }
 
-        $result = TaskModel::updateTaskTitle($params['uuid'], $params['title']);
+        $result = TaskModel::updateTaskTitle($params['uuid'], base64_decode($params['title']));
 
         if((isset($result)) && ($result !== 0)){
             return ['success' => true, 'error' => null, 'data' => $result];
@@ -118,7 +118,7 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'uuid missing'];
         }
 
-        $result = TaskModel::updateTaskContent($params['uuid'], $params['content']);
+        $result = TaskModel::updateTaskContent($params['uuid'], base64_decode($params['content']));
 
         if((isset($result)) && ($result !== 0)){
             return ['success' => true, 'error' => null, 'data' => $result];
