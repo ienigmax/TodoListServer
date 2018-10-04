@@ -148,4 +148,3 @@ response example - `{
  
  ##
  
- All rights recieved to iEnigxaX (AlexG) 2018
