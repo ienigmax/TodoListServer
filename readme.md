@@ -35,7 +35,7 @@ Note: In Linux, to avoid load errors, all the files in the app directory must be
 **The API accepts the following:**
 
 Route for getting a list of all tasks.  
-Params - None
+**Params** - None
  
 GET `/api/v1/tasks/get_all_tasks`
 
@@ -67,7 +67,7 @@ response example - `{
 ##
 
 Route for adding a new task to the list.  
-Params:
+**Params**:
  - **title** - Must be encoded to base64
  - **content** - Must be encoded to base64
  
@@ -82,7 +82,7 @@ response example - `{
 ##
 
 Route for removing a route from the list.  
-Params:
+**Params**:
  - **uuid**
  
 GET `/api/v1/tasks/delete_task`
@@ -96,7 +96,7 @@ response example - `{
 ##
 
 Route for toggling the status of the task.  
-Params:
+**Params**:
  - **uuid**
  - **status**
  
@@ -111,7 +111,7 @@ response example - `{
 ##
 
 Route for updating task title.  
-Params:
+**Params**:
  - **uuid**
  - **title** - Must be encoded to base64
  
@@ -126,7 +126,7 @@ response example - `{
 ##
 
 Route for updating task content.  
-Params:
+**Params**:
  - **uuid**
  - **content** - Must be encoded to base64
  
@@ -141,7 +141,7 @@ response example - `{
 ##
 
  Route for 404 page.  
- Params:
+ **Params**:
    - **any**
    
  GET `/api/v1/tasks/{param}`
