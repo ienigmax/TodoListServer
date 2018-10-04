@@ -32,6 +32,10 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'title missing'];
         } else if((!isset($params['content'])) or (empty($params['content']))){
             return ['success' => false, 'error' => 'content missing'];
+        } else if(!$this->is_base64_encoded($params['title'])){
+            return ['success' => false, 'error' => 'title must be base64 encoded'];
+        } else if(!$this->is_base64_encoded($params['content'])){
+            return ['success' => false, 'error' => 'content must be base64 encoded'];
         }
 
         $result = TaskModel::insertTask(['title' => base64_decode($params['title']), 'content' => base64_decode($params['content'])]);
@@ -96,6 +100,8 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'title missing'];
         } else if((!isset($params['uuid'])) or (empty($params['uuid']))){
             return ['success' => false, 'error' => 'uuid missing'];
+        } else if(!$this->is_base64_encoded($params['title'])){
+            return ['success' => false, 'error' => 'title must be base64 encoded'];
         }
 
         $result = TaskModel::updateTaskTitle($params['uuid'], base64_decode($params['title']));
@@ -116,6 +122,8 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'content missing'];
         } else if((!isset($params['uuid'])) or (empty($params['uuid']))){
             return ['success' => false, 'error' => 'uuid missing'];
+        } else if(!$this->is_base64_encoded($params['content'])){
+            return ['success' => false, 'error' => 'content must be base64 encoded'];
         }
 
         $result = TaskModel::updateTaskContent($params['uuid'], base64_decode($params['content']));
@@ -126,6 +134,14 @@ class TaskController extends Controller
             return ['success' => false, 'error' => 'update failed', 'data' => null];
         }
 
+    }
+
+    private function is_base64_encoded($data){
+        if (preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data)) {
+           return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }
