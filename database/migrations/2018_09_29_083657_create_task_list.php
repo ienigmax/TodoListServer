@@ -17,7 +17,7 @@ class CreateTaskList extends Migration
             $table->string('uuid')->unique();
             $table->string('title')->nullable();
             $table->string('content')->nullable();
-            $table->integer('status')->nullable();
+            $table->integer('status')->nullable()->default(0);
             $table->timestamps();
         });
     }
