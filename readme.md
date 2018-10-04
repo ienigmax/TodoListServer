@@ -39,6 +39,31 @@ Params - None
  
 GET `/api/v1/tasks/get_all_tasks`
 
+response example - `{
+                 "success": true,
+                 "error": null,
+                 "data": [
+                     {
+                         "id": 1,
+                         "uuid": "ee65634d3fe6c0790e8ffa907b862d40",
+                         "title": "abra",
+                         "content": "lorem ipsum dolor sit emet 123",
+                         "created_at": "2018-09-29 14:55:10",
+                         "updated_at": "2018-09-29 14:55:10",
+                         "status": "0"
+                     },
+                     {
+                         "id": 3,
+                         "uuid": "1f535736499f8a12625c3036267657ef",
+                         "title": "cadabra",
+                         "content": "lorem ipsum dolor sit emet 1234",
+                         "created_at": "2018-09-29 14:55:14",
+                         "updated_at": "2018-09-29 14:55:14",
+                         "status": "1"
+                     }
+                 ]
+             }`
+
 ##
 
 Route for adding a new task to the list.  
@@ -48,6 +73,12 @@ Params:
  
 GET `/api/v1/tasks/add_new_task`
 
+response example - `{
+                        "success": true,
+                        "error": null,
+                        "data": "8"
+                    }`
+
 ##
 
 Route for removing a route from the list.  
@@ -55,6 +86,12 @@ Params:
  - **uuid**
  
 GET `/api/v1/tasks/delete_task`
+
+response example - `{
+                        "success": true,
+                        "error": null,
+                        "data": 1
+                    }`
 
 ##
 
@@ -65,6 +102,12 @@ Params:
  
 GET `/api/v1/tasks/change_status`
 
+response example - `{
+                        "success": true,
+                        "error": null,
+                        "data": 1
+                    }`
+
 ##
 
 Route for updating task title.  
@@ -73,6 +116,12 @@ Params:
  - **title**
  
 GET `/api/v1/tasks/update_title`
+
+response example - `{
+                        "success": true,
+                        "error": null,
+                        "data": 1
+                    }`
 
 ##
 
@@ -83,6 +132,12 @@ Params:
  
 GET `/api/v1/tasks/update_content`
 
+response example - `{
+                        "success": true,
+                        "error": null,
+                        "data": 1
+                    }`
+
 ##
 
  Route for 404 page.  
@@ -92,3 +147,5 @@ GET `/api/v1/tasks/update_content`
  GET `/api/v1/tasks/{param}`
  
  ##
+ 
+ All rights recieved to iEnigxaX (AlexG) 2018
