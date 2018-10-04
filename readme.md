@@ -68,8 +68,8 @@ response example - `{
 
 Route for adding a new task to the list.  
 Params:
- - **title**
- - **content**
+ - **title** - Must be encoded to base64
+ - **content** - Must be encoded to base64
  
 GET `/api/v1/tasks/add_new_task`
 
@@ -113,7 +113,7 @@ response example - `{
 Route for updating task title.  
 Params:
  - **uuid**
- - **title**
+ - **title** - Must be encoded to base64
  
 GET `/api/v1/tasks/update_title`
 
@@ -128,7 +128,7 @@ response example - `{
 Route for updating task content.  
 Params:
  - **uuid**
- - **content**
+ - **content** - Must be encoded to base64
  
 GET `/api/v1/tasks/update_content`
 
