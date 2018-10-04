@@ -1,27 +1,94 @@
-# Laravel PHP Framework
+# API Server - todo-list-server
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## About
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+This is the backend API server for the task managing application, built on top of laravel 5.2. 
+The web application can be found here: https://github.com/ienigmax/TodoListClient
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Prerequisites
 
-## Official Documentation
+You will need the following things properly installed on your computer.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+* [Git](https://git-scm.com/)
+* [Composer](https://getcomposer.org/) 
+* [PHP 5.5](https://windows.php.net/download/) *Windows - If not found, can be installed through XAMPP or WAMP
+* [Apache](http://httpd.apache.org/download.cgi#apache24) *Not necessary, Laravel’s built in serve will also work
+* 
 
-## Contributing
+## Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+API Server (Laravel):
+* Clone the repository
+* Run “composer install” (if on windows, make sure that openssl extension is uncommented in `php.ini` and `httpd.ini` and that **PHP 5.5** is set in **PATH**)
+* In ‘Databases’ directory, create ‘database.sqlite’ file
+* In `.env` file, comment out all the lines related to `DB`, add the following lines:
+    * DB_CONNECTION=sqlite
+    * DB_DATABASE=../database/database.sqlite
 
-## Security Vulnerabilities
+    _*Note: for some reason, php artistant confuses with the DB location, when working with migrations, remove ‘../’. after finished, turn it back_
+* Run `php artisan migrate`
+* If you are using Apache, create a virtual host to public directory. Otherwise, use `php artisan serve`
+Note: In Linux, to avoid load errors, all the files in the app directory must be owned by `apache:apache`. 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Usage
 
-## License
+**The API accepts the following:**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Route for getting a list of all tasks.  
+Params - None
+ 
+GET `/api/v1/tasks/get_all_tasks`
+
+##
+
+Route for adding a new task to the list.  
+Params:
+ - **title**
+ - **content**
+ 
+GET `/api/v1/tasks/add_new_task`
+
+##
+
+Route for removing a route from the list.  
+Params:
+ - **uuid**
+ 
+GET `/api/v1/tasks/delete_task`
+
+##
+
+Route for toggling the status of the task.  
+Params:
+ - **uuid**
+ - **status**
+ 
+GET `/api/v1/tasks/change_status`
+
+##
+
+Route for updating task title.  
+Params:
+ - **uuid**
+ - **title**
+ 
+GET `/api/v1/tasks/update_title`
+
+##
+
+Route for updating task content.  
+Params:
+ - **uuid**
+ - **content**
+ 
+GET `/api/v1/tasks/update_content`
+
+##
+
+ Route for 404 page.  
+ Params:
+   - **any**
+   
+ GET `/api/v1/tasks/{param}`
+ 
+ ##
